@@ -21,9 +21,9 @@ public class UpgShearBladeR extends RightHandUpgrade {
 	public float onAttack(IUpgradeEntity attacker, EntityLivingBase target, float initAmount) {
 		int thisUpgID = CSMModRegistry.clayUpgRegistry.getIDByUpgrade(this);
 		NBTTagCompound nbt = attacker.getUpgradeNBT(thisUpgID);
-		byte stickPts = (byte)(nbt.getByte("points") - 1);
-		nbt.setByte("points", stickPts);
-		if( stickPts <= 0 ) attacker.breakUpgrade(thisUpgID);
+		//byte stickPts = (byte)(nbt.getByte("points") - 1);
+		//nbt.setByte("points", stickPts);
+		//if( stickPts <= 0 ) attacker.breakUpgrade(thisUpgID);
 		return initAmount + 1.0F + attacker.getEntity().getRNG().nextFloat();
 	}
 

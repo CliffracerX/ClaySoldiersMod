@@ -17,16 +17,16 @@ public class UpgShearBladeL extends LeftHandUpgrade
 
     @Override
     public void initUpgrade(IUpgradeEntity entity, NBTTagCompound nbt) {
-        nbt.setByte("points", (byte) 25);
+        //nbt.setByte("points", (byte) 25);
     }
     
 	@Override
 	public float onAttack(IUpgradeEntity attacker, EntityLivingBase target, float initAmount) {
 		int thisUpgID = CSMModRegistry.clayUpgRegistry.getIDByUpgrade(this);
 		NBTTagCompound nbt = attacker.getUpgradeNBT(thisUpgID);
-		byte pts = (byte)(nbt.getByte("points") - 1);
-		nbt.setByte("points", pts);
-		if( pts <= 0 ) attacker.breakUpgrade(thisUpgID);
+		//byte pts = (byte)(nbt.getByte("points") - 1);
+		//nbt.setByte("points", pts);
+		//if( pts <= 0 ) attacker.breakUpgrade(thisUpgID);
 		return initAmount + 1.0F + attacker.getEntity().getRNG().nextFloat();
 	}
 

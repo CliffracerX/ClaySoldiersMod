@@ -202,14 +202,14 @@ public class ModelClayMan extends ModelBiped
 			GL11.glPopMatrix();
 		}
 		
-//		if (hasStick) {
-//			stick.render(f5);
-//			if (isSharpened) {
-//				stickSharp.render(f5);
-//			} else {
-//				stickBlunt.render(f5);
-//			}
-//		}
+		if (hasStick) {
+			stick.render(f5);
+			if (isSharpened) {
+				stickSharp.render(f5);
+			} else {
+				stickBlunt.render(f5);
+			}
+		}
 		
 		if (hasArmor) {
 			bipedChest.render(f5);

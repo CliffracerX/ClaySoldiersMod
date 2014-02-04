@@ -44,6 +44,8 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
     private boolean isSwinging;
     private boolean isSwingingLeft;
     private float swingLeft;
+    private boolean padded = false;
+    private int padcolor = 0;
     
     private Entity targetFollow = null;
     public Entity attackingEntity = null;
@@ -247,6 +249,21 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
 		}
 	}
 	
+	protected String getLivingSound()
+    {
+		return "step.gravel";
+    }
+	
+	protected String getHurtSound()
+    {
+		return "step.gravel";
+    }
+	
+	protected String getDeathSound()
+    {
+		return "step.gravel";
+    }
+	
 	@Override
 	public void writeEntityToNBT(NBTTagCompound par1nbtTagCompound) {
 		super.writeEntityToNBT(par1nbtTagCompound);
@@ -350,8 +367,7 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
             }
             this.entityDropItem(new ItemStack(CSMModRegistry.greyDoll, 1, this.getClayTeam()), 0.0F);
             for( int id : this.upgrades.keySet() ) {
-                ItemStack upgItm = CSMModRegistry.clayUpgRegistry.getUpgradeByID(id).getItemStack(this);
-                this.entityDropItem(new ItemStack(upgItm.itemID, 1, upgItm.getItemDamage()), 0.0F);
+            	CSMModRegistry.clayUpgRegistry.getUpgradeByID(id).onDrop(this, rand);
             }
         }
         super.onDeath(par1DamageSource);

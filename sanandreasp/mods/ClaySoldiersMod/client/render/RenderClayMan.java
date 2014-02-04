@@ -25,8 +25,11 @@ import sanandreasp.mods.ClaySoldiersMod.entity.EntityClayMan;
 import sanandreasp.mods.ClaySoldiersMod.registry.CSMModRegistry;
 import sanandreasp.mods.ClaySoldiersMod.registry.Textures;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.IUpgradeItem;
+import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgFlint;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgLeather;
+import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgWool;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.rightHand.RightHandUpgrade;
+import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.rightHand.UpgStick;
 
 public class RenderClayMan extends RenderBiped
 {
@@ -42,7 +45,9 @@ public class RenderClayMan extends RenderBiped
 	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
         EntityClayMan c1 = (EntityClayMan)entityliving;
         mc1.hasArmor = c1.hasUpgrade(CSMModRegistry.clayUpgRegistry.getIDByUpgradeClass(UpgLeather.class));
-//		mc1.hasStick = c1.hasStick();
+        mc1.isPadded = c1.hasUpgrade(CSMModRegistry.clayUpgRegistry.getIDByUpgradeClass(UpgWool.class));
+		mc1.hasStick = c1.hasUpgrade(CSMModRegistry.clayUpgRegistry.getIDByUpgradeClass(UpgStick.class));
+		mc1.isSharpened = c1.hasUpgrade(CSMModRegistry.clayUpgRegistry.getIDByUpgradeClass(UpgFlint.class));
 //		mc1.hasBlazeRod = c1.hasBlazeRod();
 //		mc1.hasSpecks = c1.hasGunPowder();
 //		mc1.hasCrown = c1.hasCrown();
@@ -113,7 +118,7 @@ public class RenderClayMan extends RenderBiped
     }
 	
 	protected void renderEquipped(EntityClayMan entitycm, float f) {
-    	super.renderEquippedItems(entitycm, f);
+    	//super.renderEquippedItems(entitycm, f);
     	
 //    	ItemStack rightIS = null;
 //    	ItemStack leftIS = null;

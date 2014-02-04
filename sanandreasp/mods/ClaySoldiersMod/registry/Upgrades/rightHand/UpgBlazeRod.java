@@ -14,7 +14,7 @@ public class UpgBlazeRod extends RightHandUpgrade {
 
 	@Override
 	public void initUpgrade(IUpgradeEntity entity, NBTTagCompound nbt) {
-        nbt.setByte("points", (byte) 20);
+        //nbt.setByte("points", (byte) 20);
 	}
 
 	@Override
@@ -22,9 +22,9 @@ public class UpgBlazeRod extends RightHandUpgrade {
 		int thisUpgID = CSMModRegistry.clayUpgRegistry.getIDByUpgrade(this);
 		target.setFire(5);
 		NBTTagCompound nbt = attacker.getUpgradeNBT(thisUpgID);
-		byte stickPts = (byte)(nbt.getByte("points") - 1);
-		nbt.setByte("points", stickPts);
-		if( stickPts <= 0 ) attacker.breakUpgrade(thisUpgID);
+		//byte stickPts = (byte)(nbt.getByte("points") - 1);
+		//nbt.setByte("points", stickPts);
+		//if( stickPts <= 0 ) attacker.breakUpgrade(thisUpgID);
 		return initAmount + 1.0F + attacker.getEntity().getRNG().nextFloat();
 	}
 

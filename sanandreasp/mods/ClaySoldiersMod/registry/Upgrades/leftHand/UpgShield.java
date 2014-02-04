@@ -20,7 +20,7 @@ public class UpgShield extends LeftHandUpgrade {
 
     @Override
     public void initUpgrade(IUpgradeEntity entity, NBTTagCompound nbt) {
-        nbt.setByte("points", (byte) 20);
+        //nbt.setByte("points", (byte) 20);
         nbt.setBoolean("upgraded", false);
     }
     
@@ -29,9 +29,9 @@ public class UpgShield extends LeftHandUpgrade {
         int thisUpgID = CSMModRegistry.clayUpgRegistry.getIDByUpgrade(this);
         NBTTagCompound nbt = attacker.getUpgradeNBT(thisUpgID);
         if( nbt == null ) return initAmount;
-        byte shieldPts = (byte)(nbt.getByte("points") - 1);
-        nbt.setByte("points", shieldPts);
-        if( shieldPts <= 0 ) attacker.breakUpgrade(thisUpgID);
+        //byte shieldPts = (byte)(nbt.getByte("points") - 1);
+        //nbt.setByte("points", shieldPts);
+        //if( shieldPts <= 0 ) attacker.breakUpgrade(thisUpgID);
         
         if( nbt.getBoolean("upgraded") ) initAmount -= 1F;
         return initAmount / 2F;
@@ -51,7 +51,8 @@ public class UpgShield extends LeftHandUpgrade {
     @Override
     @SideOnly(Side.CLIENT)
     public ItemStack getHeldItem(IUpgradeEntity attacker) {
-        return new ItemStack(CSMModRegistry.shield);
+    	NBTTagCompound tag = attacker.getUpgradeNBT(CSMModRegistry.clayUpgRegistry.getIDByUpgrade(this));
+		return tag != null && tag.getBoolean("upgraded") ? new ItemStack(CSMModRegistry.shield, 1, 1) : new ItemStack(CSMModRegistry.shield, 1, 0);
     }
 
 }

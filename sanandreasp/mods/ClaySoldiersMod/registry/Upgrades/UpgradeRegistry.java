@@ -15,9 +15,12 @@ import java.util.Map;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.leftHand.UpgShearBladeL;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.leftHand.UpgShield;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgEggScent;
+import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgFlint;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgGlowstone;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgGlowstoneInf;
+import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgIronShield;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgLeather;
+import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgWool;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.rightHand.UpgBlazeRod;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.rightHand.UpgShearBladeR;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.rightHand.UpgStick;
@@ -41,6 +44,9 @@ public class UpgradeRegistry {
 	    
         registerNewUpgrade(new UpgEggScent());
         registerNewUpgrade(new UpgLeather());
+        registerNewUpgrade(new UpgIronShield());
+        registerNewUpgrade(new UpgFlint());
+        registerNewUpgrade(new UpgWool());
         registerNewUpgrade(new UpgGlowstone());
         registerNewUpgrade(new UpgGlowstoneInf());
 	}
