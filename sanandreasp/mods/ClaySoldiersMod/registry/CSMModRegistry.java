@@ -42,6 +42,7 @@ import sanandreasp.mods.ClaySoldiersMod.item.ItemGlobal;
 import sanandreasp.mods.ClaySoldiersMod.item.ItemHorses;
 import sanandreasp.mods.ClaySoldiersMod.item.ItemNexus;
 import sanandreasp.mods.ClaySoldiersMod.item.ItemTurtle;
+import sanandreasp.mods.ClaySoldiersMod.item.ItemUpgradeShield;
 import sanandreasp.mods.ClaySoldiersMod.packet.PacketHandlerCommon;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.UpgradeRegistry;
 
@@ -103,6 +104,7 @@ public class CSMModRegistry
 	public static Item brickDoll;
 	public static Item clayCookie;
 	public static Item shield;
+	public static Item upgshield;
 	public static Item turtleDoll;
 	public static Item nexus;
 	public static Item shearBlade;
@@ -124,6 +126,7 @@ public class CSMModRegistry
     	6856, // bunny doll
     	6857, // gecko doll
     	6860, // shield
+    	6859, // upgraded shield
     	6862,  // ClayNexus
     	6863,  // shearBlade
     	6861,  // brickLump
@@ -135,7 +138,7 @@ public class CSMModRegistry
     private void setIDs() {
         String[] itemNames = new String[] {
         	"disruptor", "soldierDoll", "horseDoll", "pegasusDoll", "brickDoll", "clayCookie",
-        	"turtleDoll", "bunnyDoll", "geckoDoll", "shield", "clayNexus", "shearBlade", "brickLump", "arenaPlacer"
+        	"turtleDoll", "bunnyDoll", "geckoDoll", "shield", "clayNexus", "shearBlade", "brickLump", "arenaPlacer", "upgshield"
         };
         
     	manHelper.getCfgMan().addStaticItemIDs(itemNames, itemIDs);
@@ -180,10 +183,11 @@ public class CSMModRegistry
 			clayCookie = (new ItemGlobal(itemIDs[7]-256)).setIconFile("ClaySoldiersMod:noms").setUnlocalizedName("clayCookie").setCreativeTab(this.claySoldierTab);
 			turtleDoll = (new ItemTurtle(itemIDs[8]-256)).setUnlocalizedName("clayturtle").setCreativeTab(this.claySoldierTab);
 			shield = (new ItemDebugShield(itemIDs[9]-256)).setUnlocalizedName("clayshield");
-			nexus = (new ItemNexus(itemIDs[10]-256)).setUnlocalizedName("claynexus").setCreativeTab(this.claySoldierTab);
-			shearBlade = (new ItemGlobal(itemIDs[11]-256)).setIconFile("ClaySoldiersMod:shearBlade").setUnlocalizedName("clayShearBlade").setCreativeTab(this.claySoldierTab);
-			brickLump = (new ItemGlobal(itemIDs[12]-256)).setIconFile("ClaySoldiersMod:brickLump").setUnlocalizedName("brickLump").setCreativeTab(this.claySoldierTab);
-			arenaPlacer = (new ItemArenaPlacer(itemIDs[13]-256)).setUnlocalizedName("arenaPlacer").setCreativeTab(this.claySoldierTab);
+			upgshield = (new ItemUpgradeShield(itemIDs[10]-256)).setUnlocalizedName("clayshield");
+			nexus = (new ItemNexus(itemIDs[11]-256)).setUnlocalizedName("claynexus").setCreativeTab(this.claySoldierTab);
+			shearBlade = (new ItemGlobal(itemIDs[12]-256)).setIconFile("ClaySoldiersMod:shearBlade").setUnlocalizedName("clayShearBlade").setCreativeTab(this.claySoldierTab);
+			brickLump = (new ItemGlobal(itemIDs[13]-256)).setIconFile("ClaySoldiersMod:brickLump").setUnlocalizedName("brickLump").setCreativeTab(this.claySoldierTab);
+			arenaPlacer = (new ItemArenaPlacer(itemIDs[14]-256)).setUnlocalizedName("arenaPlacer").setCreativeTab(this.claySoldierTab);
 	}
 	
 	@EventHandler

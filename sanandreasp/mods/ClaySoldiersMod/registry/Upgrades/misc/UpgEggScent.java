@@ -53,7 +53,7 @@ public class UpgEggScent extends MiscUpgrade {
     
     @Override
     public Entity onTargeted(IUpgradeEntity target, Entity attacker) {
-        return null;
+        return target.getEntity();
     }
     
     @Override

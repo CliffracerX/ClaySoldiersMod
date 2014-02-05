@@ -108,6 +108,7 @@ public interface IUpgradeItem
 	 * - 2: core<br>
 	 * - 3: miscellaneous<br>
 	 * - 4: behavior
+	 * - 5: upgrade
 	 **/
 	public int getType();
 	

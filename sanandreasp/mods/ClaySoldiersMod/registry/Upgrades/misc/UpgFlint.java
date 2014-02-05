@@ -14,7 +14,7 @@ import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.rightHand.UpgStick;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class UpgFlint extends MiscUpgradeND {
+public class UpgFlint extends ItemUpgrade {
 
     @Override
     public void initUpgrade(IUpgradeEntity entity, NBTTagCompound nbt) {

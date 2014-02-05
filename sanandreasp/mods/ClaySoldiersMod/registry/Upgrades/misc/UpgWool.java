@@ -13,7 +13,7 @@ import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.IUpgradeEntity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class UpgWool extends MiscUpgradeND {
+public class UpgWool extends ItemUpgrade {
 
     @Override
     public void initUpgrade(IUpgradeEntity entity, NBTTagCompound nbt) {

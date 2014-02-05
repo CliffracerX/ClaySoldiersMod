@@ -52,6 +52,7 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
     
     private Map<Integer, NBTTagCompound> upgrades = Maps.newHashMap();
     private int upgHash = this.upgrades.hashCode();
+	public int studded;
 
 	public EntityClayMan(World par1World) {
 		super(par1World);
@@ -82,6 +83,11 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
 	    this.motionY *= 0.9D;
 	    this.motionZ *= 0.9D;
 	}
+	
+	 public int getTalkInterval()
+	    {
+	        return 800000;
+	    }
 	
 	@Override
 	protected void entityInit() {
@@ -365,9 +371,15 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
                 super.onDeath(par1DamageSource);
                 return;
             }
+            if(!par1DamageSource.isFireDamage())
             this.entityDropItem(new ItemStack(CSMModRegistry.greyDoll, 1, this.getClayTeam()), 0.0F);
+            else
+            this.entityDropItem(new ItemStack(CSMModRegistry.brickDoll), 0.0F);
+            
             for( int id : this.upgrades.keySet() ) {
-            	CSMModRegistry.clayUpgRegistry.getUpgradeByID(id).onDrop(this, rand);
+                ItemStack upgItm = CSMModRegistry.clayUpgRegistry.getUpgradeByID(id).getItemStack(this);
+                if(CSMModRegistry.clayUpgRegistry.getUpgradeByID(id).getType()!=5)
+                this.entityDropItem(new ItemStack(upgItm.itemID, 1, upgItm.getItemDamage()), 0.0F);
             }
         }
         super.onDeath(par1DamageSource);

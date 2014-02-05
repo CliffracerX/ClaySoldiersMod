@@ -80,8 +80,9 @@ public class UpgradeRenderHelper {
             GL11.glRotatef(100F, 0.0F, 0.0F, 1.0F);
             GL11.glRotatef(40F, 1.0F, 0.0F, 0.0F);
             GL11.glRotatef(80F, 0.0F, 0.0F, 1.0F);
+            //System.out.println(upg.getHeldItem(entity).getItemDamage());
               
-            manager.itemRenderer.renderItem(kootra, upg.getHeldItem(entity), 0);
+            manager.itemRenderer.renderItem(kootra, upg.getHeldItem(kootra), 0);
             GL11.glPopMatrix();
         }
     }
