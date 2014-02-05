@@ -53,6 +53,8 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
     private Map<Integer, NBTTagCompound> upgrades = Maps.newHashMap();
     private int upgHash = this.upgrades.hashCode();
 	public int studded;
+	public boolean explosive;
+	public boolean isSuper;
 
 	public EntityClayMan(World par1World) {
 		super(par1World);
@@ -275,6 +277,7 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
 		super.writeEntityToNBT(par1nbtTagCompound);
 
 		par1nbtTagCompound.setInteger("clayTeam", this.getClayTeam());
+		par1nbtTagCompound.setFloat("speed", this.moveSpeed);
 		par1nbtTagCompound.setIntArray("clayTextures", new int[] {this.getClayTexture(), this.getRareTexture(), this.getUniqTexture() });
 		
 		NBTTagList upgrades = new NBTTagList("upgradeList");
@@ -285,6 +288,8 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
 		    upgrades.appendTag(upgNbt);
 		}
 		par1nbtTagCompound.setTag("upgrades", upgrades);
+		par1nbtTagCompound.setBoolean("goesBoom", this.explosive);
+		par1nbtTagCompound.setInteger("studdedShield", this.studded);
 	}
 	
 	@Override
@@ -300,6 +305,10 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
 	            this.setRareTexture(textures[1]);
 	            this.setUniqTexture(textures[2]);
 	        }
+	        
+	        this.studded=par1nbtTagCompound.getInteger("studdedShield");
+	        this.explosive=par1nbtTagCompound.getBoolean("goesBoom");
+	        this.moveSpeed=par1nbtTagCompound.getFloat("speed");
 	        
 	        this.upgrades.clear();
 	        NBTTagList upgList = par1nbtTagCompound.getTagList("upgrades");
@@ -371,10 +380,27 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
                 super.onDeath(par1DamageSource);
                 return;
             }
-            if(!par1DamageSource.isFireDamage())
-            this.entityDropItem(new ItemStack(CSMModRegistry.greyDoll, 1, this.getClayTeam()), 0.0F);
-            else
-            this.entityDropItem(new ItemStack(CSMModRegistry.brickDoll), 0.0F);
+            //if(!this.explosive)
+            
+            //else
+            {
+            	if (!this.worldObj.isRemote)
+                {
+                    boolean flag = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
+                    {
+                        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)2, flag);
+                    }
+
+                    this.setDead();
+                }
+            }
+            
+            {
+                if(!par1DamageSource.isFireDamage())
+                this.entityDropItem(new ItemStack(CSMModRegistry.greyDoll, 1, this.getClayTeam()), 0.0F);
+                else
+                this.entityDropItem(new ItemStack(CSMModRegistry.brickDoll), 0.0F);
+            }
             
             for( int id : this.upgrades.keySet() ) {
                 ItemStack upgItm = CSMModRegistry.clayUpgRegistry.getUpgradeByID(id).getItemStack(this);

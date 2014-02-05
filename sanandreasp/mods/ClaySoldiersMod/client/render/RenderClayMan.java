@@ -25,9 +25,11 @@ import sanandreasp.mods.ClaySoldiersMod.entity.EntityClayMan;
 import sanandreasp.mods.ClaySoldiersMod.registry.CSMModRegistry;
 import sanandreasp.mods.ClaySoldiersMod.registry.Textures;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.IUpgradeItem;
+import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgBoomDoom;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgFlint;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgLeather;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgWool;
+import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgSuper;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.rightHand.RightHandUpgrade;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.rightHand.UpgStick;
 
@@ -48,6 +50,8 @@ public class RenderClayMan extends RenderBiped
         mc1.isPadded = c1.hasUpgrade(CSMModRegistry.clayUpgRegistry.getIDByUpgradeClass(UpgWool.class));
 		mc1.hasStick = c1.hasUpgrade(CSMModRegistry.clayUpgRegistry.getIDByUpgradeClass(UpgStick.class));
 		mc1.isSharpened = c1.hasUpgrade(CSMModRegistry.clayUpgRegistry.getIDByUpgradeClass(UpgFlint.class));
+		mc1.hasSpecks = c1.hasUpgrade(CSMModRegistry.clayUpgRegistry.getIDByUpgradeClass(UpgBoomDoom.class));
+		mc1.isSuper = c1.hasUpgrade(CSMModRegistry.clayUpgRegistry.getIDByUpgradeClass(UpgSuper.class));
 //		mc1.hasBlazeRod = c1.hasBlazeRod();
 //		mc1.hasSpecks = c1.hasGunPowder();
 //		mc1.hasCrown = c1.hasCrown();

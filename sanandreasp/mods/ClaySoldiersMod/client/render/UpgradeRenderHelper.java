@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import sanandreasp.mods.ClaySoldiersMod.client.model.ModelClayMan;
 import sanandreasp.mods.ClaySoldiersMod.entity.EntityClayMan;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.IUpgradeEntity;
+import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.IUpgradeItem;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.leftHand.LeftHandUpgrade;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgEggScent;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgGlowstone;
@@ -102,7 +103,7 @@ public class UpgradeRenderHelper {
     
  // ------------------------------- GLOWSTONE ------------------------------- //
 
-    public static void onGlowPreRender(UpgGlowstone upg, RenderManager manager, IUpgradeEntity entity, float partTicks, ModelBase model) {
+    public static void onGlowPreRender(IUpgradeItem upg, RenderManager manager, IUpgradeEntity entity, float partTicks, ModelBase model) {
 //        GL11.glEnable(GL11.GL_BLEND);
 //        GL11.glDisable(GL11.GL_ALPHA_TEST);
 //        GL11.glBlendFunc(GL11.GL_ONE, GL11.GL_ONE);
@@ -118,7 +119,7 @@ public class UpgradeRenderHelper {
 //        GL11.glColor4f(0.5F, 0.5F, 0.5F, transparency);
     }
     
-    public static void onGlowPostRender(UpgGlowstone upg, RenderManager manager, IUpgradeEntity entity, float partTicks, ModelBase model) {
+    public static void onGlowPostRender(IUpgradeItem upg, RenderManager manager, IUpgradeEntity entity, float partTicks, ModelBase model) {
         int var5 = entity.getEntity().getBrightnessForRender(0x0000F0);
         int var6 = var5 % 65536;
         int var7 = var5 / 65536;
