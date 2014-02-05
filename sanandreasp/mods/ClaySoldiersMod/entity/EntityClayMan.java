@@ -380,7 +380,7 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
                 super.onDeath(par1DamageSource);
                 return;
             }
-            //if(!this.explosive)
+            if(this.explosive)
             
             //else
             {
