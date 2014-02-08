@@ -108,44 +108,69 @@ public interface Textures {
             }
         },
         new ResourceLocation[][] { // unique textures
-            new ResourceLocation[] { new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayGrey.png") }, // grey team
-            new ResourceLocation[] { new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayRed.png") }, // red team
-            new ResourceLocation[] { new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayYellow.png") }, // yellow team
-            new ResourceLocation[] { // green team
-                new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayGreen.png"),
-                new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayGreen2.png")
-            },
-            new ResourceLocation[] { new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayBlue.png") }, // blue team
-            new ResourceLocation[] { new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayOrange.png") }, // orange team
-            new ResourceLocation[] { // purple team
-                new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayPurple.png"),
-                new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayPurple2.png")
-            },
-            new ResourceLocation[] { new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayPink.png") }, // pink team
-            new ResourceLocation[] { // brown team
-                new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayBrown.png"),
-                new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayBrown2.png")
-            },
-            new ResourceLocation[] { // white team
-                new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayWhite.png"),
-                new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayWhite2.png")
-            },
-            new ResourceLocation[] { new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayBlack.png") }, // black team
-            new ResourceLocation[] { new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayCyan.png") }, // cyan team
-            new ResourceLocation[] { new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayLightGrey.png") }, // lightgrey team
-            new ResourceLocation[] { new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayLime.png") }, // lime team
-            new ResourceLocation[] { new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayLightBlue.png") }, // lightblue team
-            new ResourceLocation[] { new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayMagenta.png") }, // magenta team
-            new ResourceLocation[] { new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayMelon.png") }, // melon team
-            new ResourceLocation[] { // pumpkin team
-                new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayPumpkin.png"),
-                new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayPumpkin2.png")
-            },
-            new ResourceLocation[] { new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayCoal.png") }, // coal team
-            new ResourceLocation[] { // redstone team
-                new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayRedstone.png"),
-                new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayRedstone2.png")
-            }
+        		new ResourceLocation[] { // grey team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayGrey.png")
+                    }, 
+                    new ResourceLocation[] { // red team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayRed.png")
+                    },
+                    new ResourceLocation[] { // yellow team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayYellow.png")
+                    },
+                    new ResourceLocation[] { // green team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayGreen.png") 
+                    },
+                    new ResourceLocation[] { // blue team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayBlue.png") 
+                    },
+                    new ResourceLocation[] { // orange team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayOrange.png")
+                    },
+                    new ResourceLocation[] { // purple team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayPurple.png")
+                    },
+                    new ResourceLocation[] { // pink team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayPink.png")
+                    },
+                    new ResourceLocation[] { // brown team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayBrown.png") 
+                    },
+                    new ResourceLocation[] { // white team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayWhite.png") 
+                    },
+                    new ResourceLocation[] { // black team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayBlack.png")
+                    },
+                    new ResourceLocation[] { // cyan team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayCyan.png")
+                    }, 
+                    new ResourceLocation[] { // lightgrey team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayLightGrey.png") 
+                    }, 
+                    new ResourceLocation[] { // lime team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayLime.png") 
+                    }, 
+                    new ResourceLocation[] { // lightblue team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayLightBlue.png") 
+                    }, 
+                    new ResourceLocation[] { // magenta team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayMagenta.png") 
+                    }, 
+                    new ResourceLocation[] { // melon team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayMelon.png"),
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayMelon2.png")
+                    },
+                    new ResourceLocation[] { // pumpkin team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayPumpkin.png"),
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayPumpkin2.png")
+                    },
+                    new ResourceLocation[] { // coal team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayCoal.png") 
+                    }, 
+                    new ResourceLocation[] { // redstone team
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayRedstone.png"),
+                        new ResourceLocation("claysoldiersmod", "textures/entities/soldiers_unique/clayRedstone2.png")
+                    }
         }
         
     };

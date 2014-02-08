@@ -23,6 +23,7 @@ import org.lwjgl.opengl.GL11;
 import sanandreasp.mods.ClaySoldiersMod.client.model.ModelClayMan;
 import sanandreasp.mods.ClaySoldiersMod.entity.EntityClayMan;
 import sanandreasp.mods.ClaySoldiersMod.registry.CSMModRegistry;
+import sanandreasp.mods.ClaySoldiersMod.registry.SoldierTeams;
 import sanandreasp.mods.ClaySoldiersMod.registry.Textures;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.IUpgradeItem;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgBoomDoom;
@@ -263,7 +264,10 @@ public class RenderClayMan extends RenderBiped
 	        } else if( clayMan.getRareTexture() >= 0 ) {
                 return Textures.CLAYMAN[1][clayMan.getClayTeam()][clayMan.getRareTexture()];
             } else {
+            	if(!SoldierTeams.getTeamByID(clayMan.getClayTeam()).isCustom)
                 return Textures.CLAYMAN[0][clayMan.getClayTeam()][clayMan.getClayTexture()];
+            	else
+            		return SoldierTeams.getTeamByID(clayMan.getClayTeam()).resLoc[0];
             }
 	    }
 	    return super.getEntityTexture(par1Entity);

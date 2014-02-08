@@ -23,6 +23,7 @@ import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgGlowstoneInf;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgIronShield;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgLeather;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgSuper;
+import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgUnique;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgWool;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.rightHand.UpgBlazeRod;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.rightHand.UpgShearBladeR;
@@ -52,6 +53,7 @@ public class UpgradeRegistry {
         registerNewUpgrade(new UpgWool());
         registerNewUpgrade(new UpgGlowstone());
         registerNewUpgrade(new UpgSuper());
+        registerNewUpgrade(new UpgUnique());
         registerNewUpgrade(new UpgGlowstoneInf());
 	}
 	

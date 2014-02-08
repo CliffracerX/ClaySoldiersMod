@@ -29,7 +29,7 @@ public class UpgBoomDoom extends MiscUpgrade {
     @Override
     public void initUpgrade(IUpgradeEntity entity, NBTTagCompound nbt) {
     	EntityClayMan cs = (EntityClayMan) entity;
-        cs.explosive=true;
+        //cs.explosive=true;
     }
     
     @Override

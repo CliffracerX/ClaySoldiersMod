@@ -16,11 +16,23 @@ public class SoldierTeams {
 	public final String itemIconStr;
 	public final String localName;
 	public Icon itemIconIco = null;
+	public boolean isCustom = false;
+	public ResourceLocation[] resLoc = null;
 	
-	public SoldierTeams(int id, String icon, String localizedName) {
+	public SoldierTeams(int id, String icon, String localizedName, boolean cust) {
 		this.teamID = id;
 		this.itemIconStr = icon;
 		this.localName = localizedName;
+		this.isCustom=cust;
+		SoldierTeams.soldiers.put(id, this);
+	}
+	
+	public SoldierTeams(int id, String icon, String localizedName, boolean cust, ResourceLocation[] loc) {
+		this.teamID = id;
+		this.itemIconStr = icon;
+		this.localName = localizedName;
+		this.isCustom=cust;
+		this.resLoc = loc;
 		SoldierTeams.soldiers.put(id, this);
 	}
 	
@@ -33,26 +45,26 @@ public class SoldierTeams {
 	}
 	
 	public static void initDefTeams() {
-		new SoldierTeams(0, "0x808080", "Clay Soldier");
-		new SoldierTeams(1, "0xB24444", "Red Soldier");
-		new SoldierTeams(2, "0xD2D228", "Yellow Soldier");
-		new SoldierTeams(3, "0x309630", "Green Soldier");
-		new SoldierTeams(4, "0x3458A4", "Blue Soldier");
-		new SoldierTeams(5, "0xE8A033", "Orange Soldier");
-		new SoldierTeams(6, "0x9044AA", "Purple Soldier");
-		new SoldierTeams(7, "0xF16878", "Pink Soldier");
-		new SoldierTeams(8, "0x553322", "Brown Soldier");
-		new SoldierTeams(9, "0xFFFFFF", "White Soldier");
-		new SoldierTeams(10, "0x282828", "Black Soldier");
-		new SoldierTeams(11, "0x00FFFF", "Cyan Soldier");
-		new SoldierTeams(12, "0xC0C0C0", "Light Gray Soldier");
-		new SoldierTeams(13, "0x28FF28", "Lime Soldier");
-		new SoldierTeams(14, "0x8080FF", "Light Blue Soldier");
-		new SoldierTeams(15, "0xFF00FF", "Magenta Soldier");
-		new SoldierTeams(16, "claysoldiersmod:dollMelon", "Melon Soldier");
-		new SoldierTeams(17, "claysoldiersmod:dollPumpkin", "Pumpkin Soldier");
-		new SoldierTeams(18, "0x141414", "Coal Soldier");
-		new SoldierTeams(19, "0xC53333", "Redstone Soldier");
+		new SoldierTeams(0, "0x808080", "Clay Soldier", false);
+		new SoldierTeams(1, "0xB24444", "Red Soldier", false);
+		new SoldierTeams(2, "0xD2D228", "Yellow Soldier", false);
+		new SoldierTeams(3, "0x309630", "Green Soldier", false);
+		new SoldierTeams(4, "0x3458A4", "Blue Soldier", false);
+		new SoldierTeams(5, "0xE8A033", "Orange Soldier", false);
+		new SoldierTeams(6, "0x9044AA", "Purple Soldier", false);
+		new SoldierTeams(7, "0xF16878", "Pink Soldier", false);
+		new SoldierTeams(8, "0x553322", "Brown Soldier", false);
+		new SoldierTeams(9, "0xFFFFFF", "White Soldier", false);
+		new SoldierTeams(10, "0x282828", "Black Soldier", false);
+		new SoldierTeams(11, "0x00FFFF", "Cyan Soldier", false);
+		new SoldierTeams(12, "0xC0C0C0", "Light Gray Soldier", false);
+		new SoldierTeams(13, "0x28FF28", "Lime Soldier", false);
+		new SoldierTeams(14, "0x8080FF", "Light Blue Soldier", false);
+		new SoldierTeams(15, "0xFF00FF", "Magenta Soldier", false);
+		new SoldierTeams(16, "claysoldiersmod:dollMelon", "Melon Soldier", false);
+		new SoldierTeams(17, "claysoldiersmod:dollPumpkin", "Pumpkin Soldier", false);
+		new SoldierTeams(18, "0x141414", "Coal Soldier", false);
+		new SoldierTeams(19, "0xC53333", "Redstone Soldier", false);
 	}
 	
 /* 
@@ -63,14 +75,14 @@ public class SoldierTeams {
 	
 	public static final Map<Integer, SoldierStats> customTeams = Maps.newHashMap();
 	
-	public static void addCustomTeam(int id, String dollIcon, String name, ResourceLocation[][] teamTextures) {
-		SoldierTeams.customTeams.put(id, new SoldierStats(name, dollIcon, teamTextures));
-		SoldierTeams.soldiers.put(id + 4096, new SoldierTeams(id + 4096, dollIcon, name));
+	public static void addCustomTeam(int id, String dollIcon, String name, ResourceLocation[] teamTexture) {
+		//SoldierTeams.customTeams.put(id, new SoldierStats(name, dollIcon, teamTextures));
+		SoldierTeams.soldiers.put(id + 4096, new SoldierTeams(id + 4096, dollIcon, name, true, teamTexture));
 	}
 	
-	public static void addCustomTeam(int id, String dollIcon, String name, float health, float attackStrength, float moveSpeed, ResourceLocation[][] teamTextures) {
-		SoldierTeams.customTeams.put(id, new SoldierStats(name, dollIcon, teamTextures, health, attackStrength, moveSpeed));
-		SoldierTeams.soldiers.put(id + 4096, new SoldierTeams(id + 4096, dollIcon, name));
+	public static void addCustomTeam(int id, String dollIcon, String name, float health, float attackStrength, float moveSpeed, ResourceLocation[] teamTexture) {
+		//SoldierTeams.customTeams.put(id, new SoldierStats(name, dollIcon, teamTextures, health, attackStrength, moveSpeed));
+		SoldierTeams.soldiers.put(id + 4096, new SoldierTeams(id + 4096, dollIcon, name, true, teamTexture));
 	}
 	
 	private static class SoldierStats {
@@ -90,5 +102,11 @@ public class SoldierTeams {
 			this.walkSpeed = wlk;
 //			SoldierTeams.soldiers.add(new SoldierTeams(id + 4096, iconName, name));
 		}
+	}
+
+	public static SoldierTeams getTeamByID(int id) {
+		SoldierTeams blah = null;
+		blah = soldiers.get(id);
+		return blah;
 	}
 }

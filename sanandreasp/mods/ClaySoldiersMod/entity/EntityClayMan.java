@@ -1,6 +1,6 @@
 /*******************************************************************************************************************
  * Name:      EntityClayMan.java
- * Author:    SanAndreasP
+ * Authors:    SanAndreasP, SilverChiren, CliffracerX
  * Copyright: SanAndreasP and SilverChiren
  * License:   Attribution-NonCommercial-ShareAlike 3.0 Unported (http://creativecommons.org/licenses/by-nc-sa/3.0/)
  *******************************************************************************************************************/
@@ -20,9 +20,12 @@ import sanandreasp.core.manpack.helpers.CommonUsedStuff;
 import sanandreasp.mods.ClaySoldiersMod.entity.mount.IMount;
 import sanandreasp.mods.ClaySoldiersMod.packet.PacketSendSldUpgrades;
 import sanandreasp.mods.ClaySoldiersMod.registry.CSMModRegistry;
+import sanandreasp.mods.ClaySoldiersMod.registry.SoldierTeams;
 import sanandreasp.mods.ClaySoldiersMod.registry.Textures;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.IUpgradeEntity;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.IUpgradeItem;
+import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgBoomDoom;
+import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.misc.UpgWool;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
@@ -53,7 +56,7 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
     private Map<Integer, NBTTagCompound> upgrades = Maps.newHashMap();
     private int upgHash = this.upgrades.hashCode();
 	public int studded;
-	public boolean explosive;
+	//public boolean explosive;
 	public boolean isSuper;
 
 	public EntityClayMan(World par1World) {
@@ -71,7 +74,10 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
         
 	    int rareTextIndex = this.rand.nextInt(8196) == 0 ? rand.nextInt(3) == 0 ? 0 : rand.nextInt(Textures.CLAYMAN[1][this.getClayTeam()].length) : -1;
 	    this.setRareTexture(rareTextIndex);
+	    if(!SoldierTeams.getTeamByID(this.getClayTeam()).isCustom)
         this.setClayTexture(rand.nextInt(3) == 0 ? 0 : rand.nextInt(Textures.CLAYMAN[0][this.getClayTeam()].length));
+	    else
+	    	this.setClayTexture(SoldierTeams.getTeamByID(this.getClayTeam()).resLoc.length);
 	}
 	
 	public Entity getFollowEntity() {
@@ -88,7 +94,7 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
 	
 	 public int getTalkInterval()
 	    {
-	        return 800000;
+	        return 80000000;
 	    }
 	
 	@Override
@@ -134,6 +140,9 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
 	public boolean attackEntityFrom(DamageSource par1DamageSource, float par2) {
 	    if( this.entityToAttack == null && !(par1DamageSource.getEntity() instanceof EntityPlayer) )
 	        this.entityToAttack = par1DamageSource.getEntity();
+	    this.swingArm();
+	    this.swingLeftArm();
+	    //this.swingItem();
 	    if( par1DamageSource.getEntity() instanceof EntityPlayer )
 	        par2 = 999;
         if( !this.worldObj.isRemote ) {
@@ -288,7 +297,7 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
 		    upgrades.appendTag(upgNbt);
 		}
 		par1nbtTagCompound.setTag("upgrades", upgrades);
-		par1nbtTagCompound.setBoolean("goesBoom", this.explosive);
+		par1nbtTagCompound.setBoolean("super", this.isSuper);
 		par1nbtTagCompound.setInteger("studdedShield", this.studded);
 	}
 	
@@ -307,7 +316,7 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
 	        }
 	        
 	        this.studded=par1nbtTagCompound.getInteger("studdedShield");
-	        this.explosive=par1nbtTagCompound.getBoolean("goesBoom");
+	        this.isSuper=par1nbtTagCompound.getBoolean("super");
 	        this.moveSpeed=par1nbtTagCompound.getFloat("speed");
 	        
 	        this.upgrades.clear();
@@ -380,20 +389,7 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
                 super.onDeath(par1DamageSource);
                 return;
             }
-            if(this.explosive)
             
-            //else
-            {
-            	if (!this.worldObj.isRemote)
-                {
-                    boolean flag = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
-                    {
-                        this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)2, flag);
-                    }
-
-                    this.setDead();
-                }
-            }
             
             {
                 if(!par1DamageSource.isFireDamage())
@@ -407,6 +403,21 @@ public class EntityClayMan extends EntityCreature implements IUpgradeEntity
                 if(CSMModRegistry.clayUpgRegistry.getUpgradeByID(id).getType()!=5)
                 this.entityDropItem(new ItemStack(upgItm.itemID, 1, upgItm.getItemDamage()), 0.0F);
             }
+            
+            if(this.hasUpgrade(CSMModRegistry.clayUpgRegistry.getIDByUpgradeClass(UpgBoomDoom.class)))
+                
+                //else
+                {
+                	if (!this.worldObj.isRemote)
+                    {
+                        boolean flag = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
+                        {
+                            this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)2, flag);
+                        }
+
+                        this.setDead();
+                    }
+                }
         }
         super.onDeath(par1DamageSource);
     }
