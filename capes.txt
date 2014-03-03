@@ -1,0 +1,4 @@
+CliffracerX:https://raw.github.com/CliffracerX/ClaySoldiersMod/master/capes/CliffracerX.png
+crux_f:https://raw.github.com/CliffracerX/ClaySoldiersMod/master/capes/crux_f.png
+SanAndreasP:https://raw.github.com/CliffracerX/ClaySoldiersMod/master/capes/SanAndreasP.png
+---Cape file for CSM---

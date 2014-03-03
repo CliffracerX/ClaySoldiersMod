@@ -9,8 +9,8 @@
 package sanandreasp.mods.ClaySoldiersMod.entity.companion;
 
 public interface ICompanion
-	{
-		public int getTeam();
-		
-		public void setTeam(int team);
-	}
+{
+    public int getTeam();
+    
+    public void setTeam(int team);
+}

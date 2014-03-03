@@ -18,38 +18,38 @@ import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.IUpgradeEntity;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.IUpgradeItem;
 
 public abstract class BehaviorUpgrade implements IUpgradeItem
-	{
-		
-		@Override
-		public final int getType()
-			{
-				return 4;
-			}
-		
-		@Override
-		public boolean isCompatibleWith(IUpgradeItem upgrade)
-			{
-				return !(upgrade instanceof BehaviorUpgrade);
-			}
-		
-		@Override
-		public Entity onTargeting(IUpgradeEntity attacker, Entity target)
-			{
-				return target;
-			}
-		
-		@Override
-		public float onHit(IUpgradeEntity attacker, DamageSource source,
-				float initAmount)
-			{
-				return initAmount;
-			}
-		
-		@Override
-		public float onAttack(IUpgradeEntity attacker, EntityLivingBase target,
-				float initAmount)
-			{
-				return initAmount;
-			}
-		
-	}
+{
+    
+    @Override
+    public final int getType()
+    {
+        return 4;
+    }
+    
+    @Override
+    public boolean isCompatibleWith(IUpgradeItem upgrade)
+    {
+        return !(upgrade instanceof BehaviorUpgrade);
+    }
+    
+    @Override
+    public Entity onTargeting(IUpgradeEntity attacker, Entity target)
+    {
+        return target;
+    }
+    
+    @Override
+    public float onHit(IUpgradeEntity attacker, DamageSource source,
+            float initAmount)
+    {
+        return initAmount;
+    }
+    
+    @Override
+    public float onAttack(IUpgradeEntity attacker, EntityLivingBase target,
+            float initAmount)
+    {
+        return initAmount;
+    }
+    
+}

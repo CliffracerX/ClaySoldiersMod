@@ -21,43 +21,42 @@ import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 
 public class Handler_ClientTicks implements ITickHandler
-	{
-		
-		Minecraft mc = FMLClientHandler.instance().getClient();
-		
-		@Override
-		public void tickStart(EnumSet<TickType> type, Object... tickData)
-			{
-				EntityClayCam.resetCam();
-				
-				Iterator<Entry<String, Integer>> waveSecs =
-						CSMModRegistry.waveTimes.entrySet().iterator();
-				
-				while (waveSecs.hasNext()
-						&& FMLCommonHandler.instance()
-								.getMinecraftServerInstance() == null)
-					{
-						Entry<String, Integer> entry = waveSecs.next();
-						CSMModRegistry.waveTimes.put(entry.getKey(),
-								Math.min((int) entry.getValue() - 1, 0));
-					}
-			}
-		
-		@Override
-		public void tickEnd(EnumSet<TickType> type, Object... tickData)
-			{
-			}
-		
-		@Override
-		public EnumSet<TickType> ticks()
-			{
-				return EnumSet.of(TickType.CLIENT);
-			}
-		
-		@Override
-		public String getLabel()
-			{
-				return "CSMTickHandlerClt";
-			}
-		
-	}
+{
+    
+    Minecraft mc = FMLClientHandler.instance().getClient();
+    
+    @Override
+    public void tickStart(EnumSet<TickType> type, Object... tickData)
+    {
+        EntityClayCam.resetCam();
+        
+        Iterator<Entry<String, Integer>> waveSecs =
+                CSMModRegistry.waveTimes.entrySet().iterator();
+        
+        while (waveSecs.hasNext()
+                && FMLCommonHandler.instance().getMinecraftServerInstance() == null)
+        {
+            Entry<String, Integer> entry = waveSecs.next();
+            CSMModRegistry.waveTimes.put(entry.getKey(),
+                    Math.min((int) entry.getValue() - 1, 0));
+        }
+    }
+    
+    @Override
+    public void tickEnd(EnumSet<TickType> type, Object... tickData)
+    {
+    }
+    
+    @Override
+    public EnumSet<TickType> ticks()
+    {
+        return EnumSet.of(TickType.CLIENT);
+    }
+    
+    @Override
+    public String getLabel()
+    {
+        return "CSMTickHandlerClt";
+    }
+    
+}

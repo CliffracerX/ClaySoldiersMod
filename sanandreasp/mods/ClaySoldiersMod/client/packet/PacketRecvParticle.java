@@ -9,22 +9,21 @@ import sanandreasp.mods.ClaySoldiersMod.packet.PacketBase;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.IUpgradeEntity;
 
 public class PacketRecvParticle extends PacketBase
-	{
-		@Override
-		public void handle(DataInputStream iStream, EntityPlayer player)
-				throws IOException
-			{
-				short partID = iStream.readShort();
-				switch (partID)
-					{
-						case 0:
-							ParticleHelper.onSpawnSldCritical(
-									iStream.readFloat(), iStream.readFloat(),
-									iStream.readFloat());
-							break;
-						
-						default:
-							break;
-					}
-			}
-	}
+{
+    @Override
+    public void handle(DataInputStream iStream, EntityPlayer player)
+            throws IOException
+    {
+        short partID = iStream.readShort();
+        switch (partID)
+        {
+            case 0:
+                ParticleHelper.onSpawnSldCritical(iStream.readFloat(),
+                        iStream.readFloat(), iStream.readFloat());
+                break;
+            
+            default:
+                break;
+        }
+    }
+}

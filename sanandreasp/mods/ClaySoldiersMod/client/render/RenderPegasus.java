@@ -16,23 +16,22 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.src.*;
 
 public class RenderPegasus extends RenderHorse
-	{
-		
-		public RenderPegasus(ModelBiped model, float f)
-			{
-				super(model, f);
-				mv1 = (ModelPegasus) model;
-			}
-		
-		@Override
-		protected void
-				preRenderCallback(EntityLivingBase entityliving, float f)
-			{
-				super.preRenderCallback(entityliving, f);
-				EntityPegasus v1 = (EntityPegasus) entityliving;
-				mv1.sinage = v1.sinage;
-				mv1.gonRound = v1.onGround;
-			}
-		
-		public ModelPegasus mv1;
-	}
+{
+    
+    public RenderPegasus(ModelBiped model, float f)
+    {
+        super(model, f);
+        mv1 = (ModelPegasus) model;
+    }
+    
+    @Override
+    protected void preRenderCallback(EntityLivingBase entityliving, float f)
+    {
+        super.preRenderCallback(entityliving, f);
+        EntityPegasus v1 = (EntityPegasus) entityliving;
+        mv1.sinage = v1.sinage;
+        mv1.gonRound = v1.onGround;
+    }
+    
+    public ModelPegasus mv1;
+}

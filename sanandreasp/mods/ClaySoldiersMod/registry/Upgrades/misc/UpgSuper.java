@@ -23,28 +23,28 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class UpgSuper extends MiscUpgrade
-	{
-		
-		@Override
-		public void initUpgrade(IUpgradeEntity entity, NBTTagCompound nbt)
-			{
-				EntityClayMan cs = (EntityClayMan) entity;
-				cs.isSuper = true;
-				cs.moveSpeed *= 1.5F;
-				cs.setHealth(cs.getHealth() * 20);
-			}
-		
-		@Override
-		public ItemStack getItemStack(IUpgradeEntity entity)
-			{
-				return new ItemStack(Item.diamond);
-			}
-		
-		@Override
-		@SideOnly(Side.CLIENT)
-		public ItemStack getHeldItem(IUpgradeEntity entity)
-			{
-				return null;
-			}
-		
-	}
+{
+    
+    @Override
+    public void initUpgrade(IUpgradeEntity entity, NBTTagCompound nbt)
+    {
+        EntityClayMan cs = (EntityClayMan) entity;
+        cs.isSuper = true;
+        cs.moveSpeed *= 1.5F;
+        cs.setHealth(cs.getHealth() * 20);
+    }
+    
+    @Override
+    public ItemStack getItemStack(IUpgradeEntity entity)
+    {
+        return new ItemStack(Item.diamond);
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public ItemStack getHeldItem(IUpgradeEntity entity)
+    {
+        return null;
+    }
+    
+}

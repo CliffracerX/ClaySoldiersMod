@@ -21,43 +21,43 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class UpgGlowstone extends MiscUpgrade
-	{
-		
-		@Override
-		@SideOnly(Side.CLIENT)
-		public void onPreRender(IUpgradeEntity entity, RenderManager manager,
-				float partTicks, ModelBase model)
-			{
-				UpgradeRenderHelper.onGlowPreRender(this, manager, entity,
-						partTicks, model);
-			}
-		
-		@Override
-		public void initUpgrade(IUpgradeEntity entity, NBTTagCompound nbt)
-			{
-				
-			}
-		
-		@Override
-		@SideOnly(Side.CLIENT)
-		public void onPostRender(IUpgradeEntity entity, RenderManager manager,
-				float partTicks, ModelBase model)
-			{
-				UpgradeRenderHelper.onGlowPostRender(this, manager, entity,
-						partTicks, model);
-			}
-		
-		@Override
-		public ItemStack getItemStack(IUpgradeEntity entity)
-			{
-				return new ItemStack(Item.glowstone);
-			}
-		
-		@Override
-		@SideOnly(Side.CLIENT)
-		public ItemStack getHeldItem(IUpgradeEntity entity)
-			{
-				return null;
-			}
-		
-	}
+{
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void onPreRender(IUpgradeEntity entity, RenderManager manager,
+            float partTicks, ModelBase model)
+    {
+        UpgradeRenderHelper.onGlowPreRender(this, manager, entity, partTicks,
+                model);
+    }
+    
+    @Override
+    public void initUpgrade(IUpgradeEntity entity, NBTTagCompound nbt)
+    {
+        
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void onPostRender(IUpgradeEntity entity, RenderManager manager,
+            float partTicks, ModelBase model)
+    {
+        UpgradeRenderHelper.onGlowPostRender(this, manager, entity, partTicks,
+                model);
+    }
+    
+    @Override
+    public ItemStack getItemStack(IUpgradeEntity entity)
+    {
+        return new ItemStack(Item.glowstone);
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public ItemStack getHeldItem(IUpgradeEntity entity)
+    {
+        return null;
+    }
+    
+}

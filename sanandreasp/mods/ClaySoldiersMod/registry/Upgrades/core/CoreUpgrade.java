@@ -18,38 +18,38 @@ import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.IUpgradeEntity;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.IUpgradeItem;
 
 public abstract class CoreUpgrade implements IUpgradeItem
-	{
-		
-		@Override
-		public final int getType()
-			{
-				return 2;
-			}
-		
-		@Override
-		public boolean isCompatibleWith(IUpgradeItem upgrade)
-			{
-				return !(upgrade instanceof CoreUpgrade);
-			}
-		
-		@Override
-		public Entity onTargeting(IUpgradeEntity attacker, Entity target)
-			{
-				return target;
-			}
-		
-		@Override
-		public float onHit(IUpgradeEntity attacker, DamageSource source,
-				float initAmount)
-			{
-				return initAmount;
-			}
-		
-		@Override
-		public float onAttack(IUpgradeEntity attacker, EntityLivingBase target,
-				float initAmount)
-			{
-				return initAmount;
-			}
-		
-	}
+{
+    
+    @Override
+    public final int getType()
+    {
+        return 2;
+    }
+    
+    @Override
+    public boolean isCompatibleWith(IUpgradeItem upgrade)
+    {
+        return !(upgrade instanceof CoreUpgrade);
+    }
+    
+    @Override
+    public Entity onTargeting(IUpgradeEntity attacker, Entity target)
+    {
+        return target;
+    }
+    
+    @Override
+    public float onHit(IUpgradeEntity attacker, DamageSource source,
+            float initAmount)
+    {
+        return initAmount;
+    }
+    
+    @Override
+    public float onAttack(IUpgradeEntity attacker, EntityLivingBase target,
+            float initAmount)
+    {
+        return initAmount;
+    }
+    
+}

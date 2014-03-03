@@ -17,65 +17,64 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class UpgShield extends LeftHandUpgrade
-	{
-		
-		@Override
-		public void initUpgrade(IUpgradeEntity entity, NBTTagCompound nbt)
-			{
-				// nbt.setByte("points", (byte) 20);
-				// nbt.setBoolean("upgraded", false);
-			}
-		
-		@Override
-		public float onHit(IUpgradeEntity attacker, DamageSource source,
-				float initAmount)
-			{
-				int thisUpgID =
-						CSMModRegistry.clayUpgRegistry.getIDByUpgrade(this);
-				EntityClayMan cs = (EntityClayMan) attacker;
-				NBTTagCompound nbt = attacker.getUpgradeNBT(thisUpgID);
-				if (nbt == null)
-					return initAmount;
-				// byte shieldPts = (byte)(nbt.getByte("points") - 1);
-				// nbt.setByte("points", shieldPts);
-				// if( shieldPts <= 0 ) attacker.breakUpgrade(thisUpgID);
-				
-				if (cs.studded == 1)
-					initAmount -= 1F;
-				return initAmount / 2F;
-			}
-		
-		@Override
-		public ItemStack getItemStack(IUpgradeEntity attacker)
-			{
-				return new ItemStack(Item.bowlEmpty);
-			}
-		
-		@Override
-		@SideOnly(Side.CLIENT)
-		public void onRenderEquipped(IUpgradeEntity entity,
-				RenderManager manager, float partTicks, ModelBase model)
-			{
-				UpgradeRenderHelper.onShieldRender(this, manager, entity,
-						partTicks, model);
-			}
-		
-		@Override
-		@SideOnly(Side.CLIENT)
-		public ItemStack getHeldItem(IUpgradeEntity attacker)
-			{
-				// NBTTagCompound tag =
-				// attacker.getUpgradeNBT(CSMModRegistry.clayUpgRegistry.getIDByUpgrade(this));
-				EntityClayMan cs = (EntityClayMan) attacker;
-				int dmg = 0;
-				// if(tag!=null)
-				if (cs.studded == 1)
-					dmg = 1;
-				// System.out.println("DERPMG"+dmg)
-				if (dmg == 1)
-					return new ItemStack(CSMModRegistry.upgshield, 1, 0);
-				else
-					return new ItemStack(CSMModRegistry.shield, 1, 0);
-			}
-		
-	}
+{
+    
+    @Override
+    public void initUpgrade(IUpgradeEntity entity, NBTTagCompound nbt)
+    {
+        // nbt.setByte("points", (byte) 20);
+        // nbt.setBoolean("upgraded", false);
+    }
+    
+    @Override
+    public float onHit(IUpgradeEntity attacker, DamageSource source,
+            float initAmount)
+    {
+        int thisUpgID = CSMModRegistry.clayUpgRegistry.getIDByUpgrade(this);
+        EntityClayMan cs = (EntityClayMan) attacker;
+        NBTTagCompound nbt = attacker.getUpgradeNBT(thisUpgID);
+        if (nbt == null)
+            return initAmount;
+        // byte shieldPts = (byte)(nbt.getByte("points") - 1);
+        // nbt.setByte("points", shieldPts);
+        // if( shieldPts <= 0 ) attacker.breakUpgrade(thisUpgID);
+        
+        if (cs.studded == 1)
+            initAmount -= 1F;
+        return initAmount / 2F;
+    }
+    
+    @Override
+    public ItemStack getItemStack(IUpgradeEntity attacker)
+    {
+        return new ItemStack(Item.bowlEmpty);
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void onRenderEquipped(IUpgradeEntity entity, RenderManager manager,
+            float partTicks, ModelBase model)
+    {
+        UpgradeRenderHelper.onShieldRender(this, manager, entity, partTicks,
+                model);
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public ItemStack getHeldItem(IUpgradeEntity attacker)
+    {
+        // NBTTagCompound tag =
+        // attacker.getUpgradeNBT(CSMModRegistry.clayUpgRegistry.getIDByUpgrade(this));
+        EntityClayMan cs = (EntityClayMan) attacker;
+        int dmg = 0;
+        // if(tag!=null)
+        if (cs.studded == 1)
+            dmg = 1;
+        // System.out.println("DERPMG"+dmg)
+        if (dmg == 1)
+            return new ItemStack(CSMModRegistry.upgshield, 1, 0);
+        else
+            return new ItemStack(CSMModRegistry.shield, 1, 0);
+    }
+    
+}

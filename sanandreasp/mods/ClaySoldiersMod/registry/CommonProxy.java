@@ -34,93 +34,90 @@ import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class CommonProxy
-	{
-		
-		public boolean isClient()
-			{
-				return false;
-			}
-		
-		public void registerRenderInformation()
-			{
-			}
-		
-		public void showEffect(World worldObj, Entity entity, int particleFX)
-			{
-				if (!worldObj.isRemote && worldObj instanceof WorldServer)
-					{
-						byte[] entityID = getEntityIdAsByteArray(entity);
-						byte[] packetData =
-								new byte[]
-									{
-											entityID[0], entityID[1],
-											entityID[2], entityID[3], (byte) 2,
-											(byte) particleFX
-									};
-						Packet250CustomPayload packet =
-								new Packet250CustomPayload("ClaySoldiers",
-										packetData);
-						PacketDispatcher.sendPacketToAllInDimension(packet,
-								worldObj.provider.dimensionId);
-					}
-			}
-		
-		public void swingSoldierArm(World worldObj, EntityClayMan entity)
-			{
-				if (!worldObj.isRemote && worldObj instanceof WorldServer)
-					{
-						byte[] entityID = getEntityIdAsByteArray(entity);
-						byte[] packetData =
-								new byte[]
-									{
-											entityID[0], entityID[1],
-											entityID[2], entityID[3], (byte) 3
-									};
-						Packet250CustomPayload packet =
-								new Packet250CustomPayload("ClaySoldiers",
-										packetData);
-						PacketDispatcher.sendPacketToAllInDimension(packet,
-								worldObj.provider.dimensionId);
-					}
-			}
-		
-		public void spawnEntityParticles(byte[] data, Player player)
-			{
-			}
-		
-		public void swingSoldierArm(byte[] data, Player player)
-			{
-			}
-		
-		public void spawnBlockParticles(int ID, Object[] data)
-			{
-			}
-		
-		private byte[] getEntityIdAsByteArray(Entity entity)
-			{
-				return new byte[]
-					{
-							(byte) (entity.entityId & 255),
-							(byte) (((entity.entityId) >> 8) & 255),
-							(byte) (((entity.entityId) >> 16) & 255),
-							(byte) (((entity.entityId) >> 24) & 255)
-					};
-			}
-		
-		public World getClientWorld()
-			{
-				return null;
-			}
-		
-		public void cameraReset()
-			{
-			}
-		
-		public void cameraReset(Object game)
-			{
-			}
-		
-		public void sendToServer(Packet packet)
-			{
-			}
-	}
+{
+    
+    public boolean isClient()
+    {
+        return false;
+    }
+    
+    public void registerRenderInformation()
+    {
+    }
+    
+    public void showEffect(World worldObj, Entity entity, int particleFX)
+    {
+        if (!worldObj.isRemote && worldObj instanceof WorldServer)
+        {
+            byte[] entityID = getEntityIdAsByteArray(entity);
+            byte[] packetData =
+                    new byte[]
+                    {
+                            entityID[0], entityID[1], entityID[2], entityID[3],
+                            (byte) 2, (byte) particleFX
+                    };
+            Packet250CustomPayload packet =
+                    new Packet250CustomPayload("ClaySoldiers", packetData);
+            PacketDispatcher.sendPacketToAllInDimension(packet,
+                    worldObj.provider.dimensionId);
+        }
+    }
+    
+    public void swingSoldierArm(World worldObj, EntityClayMan entity)
+    {
+        if (!worldObj.isRemote && worldObj instanceof WorldServer)
+        {
+            byte[] entityID = getEntityIdAsByteArray(entity);
+            byte[] packetData =
+                    new byte[]
+                    {
+                            entityID[0], entityID[1], entityID[2], entityID[3],
+                            (byte) 3
+                    };
+            Packet250CustomPayload packet =
+                    new Packet250CustomPayload("ClaySoldiers", packetData);
+            PacketDispatcher.sendPacketToAllInDimension(packet,
+                    worldObj.provider.dimensionId);
+        }
+    }
+    
+    public void spawnEntityParticles(byte[] data, Player player)
+    {
+    }
+    
+    public void swingSoldierArm(byte[] data, Player player)
+    {
+    }
+    
+    public void spawnBlockParticles(int ID, Object[] data)
+    {
+    }
+    
+    private byte[] getEntityIdAsByteArray(Entity entity)
+    {
+        return new byte[]
+        {
+                (byte) (entity.entityId & 255),
+                (byte) (((entity.entityId) >> 8) & 255),
+                (byte) (((entity.entityId) >> 16) & 255),
+                (byte) (((entity.entityId) >> 24) & 255)
+        };
+    }
+    
+    public World getClientWorld()
+    {
+        return null;
+    }
+    
+    public void cameraReset()
+    {
+    }
+    
+    public void cameraReset(Object game)
+    {
+    }
+    
+    public void sendToServer(Packet packet)
+    {
+    }
+}

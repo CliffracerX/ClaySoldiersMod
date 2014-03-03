@@ -19,30 +19,30 @@ import net.minecraft.src.*;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderGecko extends RenderBiped implements Textures
-	{
-		
-		public RenderGecko(ModelBiped model, float f)
-			{
-				super(model, f);
-			}
-		
-		@Override
-		public void doRenderLiving(EntityLiving entityliving, double d,
-				double d1, double d2, float f, float f1)
-			{
-				f1 *= 2F;
-				super.doRenderLiving(entityliving, d, d1, d2, f, f1);
-			}
-		
-		@Override
-		protected ResourceLocation getEntityTexture(Entity entity)
-			{
-				int type1 =
-						(entity instanceof EntityGecko) ? ((EntityGecko) entity)
-								.getType(0) : 0;
-				int type2 =
-						(entity instanceof EntityGecko) ? ((EntityGecko) entity)
-								.getType(1) : 0;
-				return GECKO[type1][type2];
-			}
-	}
+{
+    
+    public RenderGecko(ModelBiped model, float f)
+    {
+        super(model, f);
+    }
+    
+    @Override
+    public void doRenderLiving(EntityLiving entityliving, double d, double d1,
+            double d2, float f, float f1)
+    {
+        f1 *= 2F;
+        super.doRenderLiving(entityliving, d, d1, d2, f, f1);
+    }
+    
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity)
+    {
+        int type1 =
+                (entity instanceof EntityGecko) ? ((EntityGecko) entity)
+                        .getType(0) : 0;
+        int type2 =
+                (entity instanceof EntityGecko) ? ((EntityGecko) entity)
+                        .getType(1) : 0;
+        return GECKO[type1][type2];
+    }
+}

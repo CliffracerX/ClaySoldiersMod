@@ -23,26 +23,26 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class UpgBoomDoom extends MiscUpgrade
-	{
-		
-		@Override
-		public void initUpgrade(IUpgradeEntity entity, NBTTagCompound nbt)
-			{
-				EntityClayMan cs = (EntityClayMan) entity;
-				// cs.explosive=true;
-			}
-		
-		@Override
-		public ItemStack getItemStack(IUpgradeEntity entity)
-			{
-				return new ItemStack(Item.gunpowder);
-			}
-		
-		@Override
-		@SideOnly(Side.CLIENT)
-		public ItemStack getHeldItem(IUpgradeEntity entity)
-			{
-				return null;
-			}
-		
-	}
+{
+    
+    @Override
+    public void initUpgrade(IUpgradeEntity entity, NBTTagCompound nbt)
+    {
+        EntityClayMan cs = (EntityClayMan) entity;
+        // cs.explosive=true;
+    }
+    
+    @Override
+    public ItemStack getItemStack(IUpgradeEntity entity)
+    {
+        return new ItemStack(Item.gunpowder);
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public ItemStack getHeldItem(IUpgradeEntity entity)
+    {
+        return null;
+    }
+    
+}

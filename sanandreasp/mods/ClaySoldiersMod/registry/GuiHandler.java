@@ -30,77 +30,74 @@ import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
 
 public class GuiHandler implements IGuiHandler
-	{
-		@Override
-		public Object getServerGuiElement(int ID, EntityPlayer player,
-				World world, int x, int y, int z)
-			{
-				EntityClayNexus entitySrv = null;
-				if (world instanceof WorldServer)
-					entitySrv =
-							(EntityClayNexus) ((WorldServer) world)
-									.getEntityByID(x);
-				if (entitySrv != null && ID == 0)
-					return new ContainerNexus(player.inventory, entitySrv,
-							ID == 0);
-				else
-					return null;
-			}
-		
-		@Override
-		public Object getClientGuiElement(int ID, EntityPlayer player,
-				World world, int x, int y, int z)
-			{
-				EntityClayNexus entityClt = null;
-				if (world instanceof WorldClient)
-					entityClt =
-							(EntityClayNexus) ((WorldClient) world)
-									.getEntityByID(x);
-				if (entityClt != null)
-					return new GuiNexus(player, entityClt, ID == 0);
-				else
-					return null;
-			}
-		
-		// @Override
-		// public void onPacketData(INetworkManager manager,
-		// Packet250CustomPayload packet, Player player) {
-		// byte packetID = packet.data[4];
-		//
-		// if (packetID == 2 &&
-		// FMLCommonHandler.instance().getSide().isClient()) {
-		// CSMModRegistry.proxy.spawnEntityParticles(packet.data, player);
-		// } else if (packetID == 3 &&
-		// FMLCommonHandler.instance().getSide().isClient()) {
-		// CSMModRegistry.proxy.swingSoldierArm(packet.data, player);
-		// } else {
-		// EntityClayNexus nexus =
-		// ((EntityClayNexus)((WorldServer)((EntityPlayer)player).worldObj).getEntityByID(getEntityIdFromByteArray(packet.data)));
-		//
-		// switch(packetID) {
-		// case 0:
-		// nexus.setWaveDurSec((int)packet.data[5] & 255);
-		// nexus.setMaxSpwnSoldiers((int)packet.data[6] & 255);
-		// nexus.setMaxLvngSoldiers((int)packet.data[7] & 255);
-		// nexus.setChanceGetNone((int)packet.data[8] & 255);
-		// nexus.setHealth((int)packet.data[9] & 255);
-		// nexus.setSrvMaxHealth((int)packet.data[10] & 255);
-		// break;
-		// case 1:
-		// nexus.setHealth((int)packet.data[5] & 255);
-		// nexus.setDestroyed(packet.data[6] == (byte)1);
-		// nexus.setRandItems(packet.data[7] == (byte)1);
-		// break;
-		// }
-		// }
-		// }
-		
-		// private int getEntityIdFromByteArray(byte... bt) {
-		// int id = 0;
-		// id |= (int)bt[0] & 255;
-		// id |= ((int)bt[1] & 255) << 8;
-		// id |= ((int)bt[2] & 255) << 16;
-		// id |= ((int)bt[3] & 255) << 24;
-		// return id;
-		// }
-	}
+{
+    @Override
+    public Object getServerGuiElement(int ID, EntityPlayer player, World world,
+            int x, int y, int z)
+    {
+        EntityClayNexus entitySrv = null;
+        if (world instanceof WorldServer)
+            entitySrv =
+                    (EntityClayNexus) ((WorldServer) world).getEntityByID(x);
+        if (entitySrv != null && ID == 0)
+            return new ContainerNexus(player.inventory, entitySrv, ID == 0);
+        else
+            return null;
+    }
+    
+    @Override
+    public Object getClientGuiElement(int ID, EntityPlayer player, World world,
+            int x, int y, int z)
+    {
+        EntityClayNexus entityClt = null;
+        if (world instanceof WorldClient)
+            entityClt =
+                    (EntityClayNexus) ((WorldClient) world).getEntityByID(x);
+        if (entityClt != null)
+            return new GuiNexus(player, entityClt, ID == 0);
+        else
+            return null;
+    }
+    
+    // @Override
+    // public void onPacketData(INetworkManager manager,
+    // Packet250CustomPayload packet, Player player) {
+    // byte packetID = packet.data[4];
+    //
+    // if (packetID == 2 &&
+    // FMLCommonHandler.instance().getSide().isClient()) {
+    // CSMModRegistry.proxy.spawnEntityParticles(packet.data, player);
+    // } else if (packetID == 3 &&
+    // FMLCommonHandler.instance().getSide().isClient()) {
+    // CSMModRegistry.proxy.swingSoldierArm(packet.data, player);
+    // } else {
+    // EntityClayNexus nexus =
+    // ((EntityClayNexus)((WorldServer)((EntityPlayer)player).worldObj).getEntityByID(getEntityIdFromByteArray(packet.data)));
+    //
+    // switch(packetID) {
+    // case 0:
+    // nexus.setWaveDurSec((int)packet.data[5] & 255);
+    // nexus.setMaxSpwnSoldiers((int)packet.data[6] & 255);
+    // nexus.setMaxLvngSoldiers((int)packet.data[7] & 255);
+    // nexus.setChanceGetNone((int)packet.data[8] & 255);
+    // nexus.setHealth((int)packet.data[9] & 255);
+    // nexus.setSrvMaxHealth((int)packet.data[10] & 255);
+    // break;
+    // case 1:
+    // nexus.setHealth((int)packet.data[5] & 255);
+    // nexus.setDestroyed(packet.data[6] == (byte)1);
+    // nexus.setRandItems(packet.data[7] == (byte)1);
+    // break;
+    // }
+    // }
+    // }
+    
+    // private int getEntityIdFromByteArray(byte... bt) {
+    // int id = 0;
+    // id |= (int)bt[0] & 255;
+    // id |= ((int)bt[1] & 255) << 8;
+    // id |= ((int)bt[2] & 255) << 16;
+    // id |= ((int)bt[3] & 255) << 24;
+    // return id;
+    // }
+}

@@ -8,27 +8,27 @@ import sanandreasp.mods.ClaySoldiersMod.packet.PacketBase;
 import sanandreasp.mods.ClaySoldiersMod.registry.Upgrades.IUpgradeEntity;
 
 public class PacketRecvSldUpgrades extends PacketBase
-	{
-		@Override
-		public void handle(DataInputStream iStream, EntityPlayer player)
-				throws IOException
-			{
-				Entity e = player.worldObj.getEntityByID(iStream.readInt());
-				if (e != null && e instanceof IUpgradeEntity)
-					{
-						IUpgradeEntity upgMan = (IUpgradeEntity) e;
-						upgMan.clearUpgrades();
-						while (true)
-							{
-								try
-									{
-										upgMan.addUpgrade(iStream.readInt());
-									}
-								catch (IOException exception)
-									{
-										break;
-									}
-							}
-					}
-			}
-	}
+{
+    @Override
+    public void handle(DataInputStream iStream, EntityPlayer player)
+            throws IOException
+    {
+        Entity e = player.worldObj.getEntityByID(iStream.readInt());
+        if (e != null && e instanceof IUpgradeEntity)
+        {
+            IUpgradeEntity upgMan = (IUpgradeEntity) e;
+            upgMan.clearUpgrades();
+            while (true)
+            {
+                try
+                {
+                    upgMan.addUpgrade(iStream.readInt());
+                }
+                catch (IOException exception)
+                {
+                    break;
+                }
+            }
+        }
+    }
+}
