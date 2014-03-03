@@ -8,3 +8,5 @@ To install, you need a non forge-gradle version of the SapManPack installed on y
 Then, simply drop the assets and sanandreasp folder into your mcp/src/minecraft, and you're good to go!
 
 Clay Soldiers is licensed under the creative commons 3.0: http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+Note that I am working with SanAndreasP and SilverChiren now on the main repo, so that means I probably won't work on this one.
